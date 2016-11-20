@@ -1,7 +1,7 @@
 # alpine-svn
 ## Description:
 
-Docker image for Subversion with WebDAV on Alpine Linux. This image has 'Auto-versioning' turned on (SVNAutoversioning on) for PUTs grom non subversion clients.
+Docker image for Subversion with WebDAV on Alpine Linux. This image has 'Auto-versioning' turned on (SVNAutoversioning on) for PUTs from non subversion clients.
 
 ## Building it (it is not up on Dockerhub)
 
