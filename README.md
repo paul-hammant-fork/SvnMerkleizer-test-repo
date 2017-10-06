@@ -1,16 +1,19 @@
-# alpine-svn
+# alpine-svn (Docker Image)
 
-Alpine Linux + Subversion via Apache2's interface on port 80 (on the container)
+Alpine Linux + Subversion via Apache2's interface on port 80 for WebDAV (on the container)
+
+## Image special features:
+
+1. SVNAutoversioning turned on, to allow PUTs from non-Subversion clients to work (with default commit message)
+2. DepthInfinity is also turned on, to allow deep querying for changed files, which probably means you should NOT allow anon access.
+
+## Versions of key components
 
 * Alipine Linux is presently v3.6
 * Subversion is presently v1.9.7
 * Apache is presently v2.4.27
 
-## Description:
-
-Docker image for Subversion with WebDAV on Alpine Linux. This image has 'Auto-versioning' turned on (SVNAutoversioning on) for PUTs from non subversion clients.
-
-## Building it (it is not up on Dockerhub)
+# Building it (it is not up on Dockerhub)
 
 ```
 $ git clone git@github.com:paul-hammant/alpine-svn.git
@@ -18,7 +21,7 @@ $ cd alpine-svn
 $ docker build -t paul-hammant/alpine-svn .
 ```
 
-## Running it
+# Running it
 
 Starting container with docker command:
 
@@ -27,7 +30,7 @@ $ docker run -d -P paul-hammant/alpine-svn
 ```
 ^ The container starts with the default account: davsvn (password: davsvn) and the default repository: testrepo
 
-### Alternates
+## Alternates
 
 ```
 $ docker run -d -e SVN_REPO=repo -P paul-hammant/alpine-svn
@@ -48,7 +51,7 @@ $ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -e SVN_REPO=repo -P pa
 
 Docker allocates an expanding sorage file to the container. The default for that is 50GB.
 
-## Using it
+# Using it
 
 You need to take a note of the server address (it could have been overridden with a `-p hostPort:guestPort` option on the run command, but was not.
 ```
@@ -75,7 +78,7 @@ curl -u davsvn:davsvn -X PUT -T .greeting http://0.0.0.0:32772/svn/testrepo/gree
 
 Whereupon you can `svn up` back in the checkout to see it.
 
-## Commit messages suck
+# Editorial: MOD_DAV_SVN Commit messages suck!
 
     `Autoversioning commit:  a non-deltaV client made a change to`
 
