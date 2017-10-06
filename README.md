@@ -1,4 +1,4 @@
-# Alpine-Svn (Docker Image)
+# Subversion + Apache2 Docker Image (based on Alpine Linux)
 
 Alpine Linux + Subversion via Apache2's interface on port 80 for WebDAV (on the container)
 
