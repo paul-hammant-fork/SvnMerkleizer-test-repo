@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER Pika Do <pokido99@gmail.com>
+MAINTAINER Paul Hammant <paul@hammant.org>
 
 # Proxy settings if necessary
 # ENV http_proxy=http://proxy:8080

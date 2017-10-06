@@ -1,12 +1,12 @@
 version: '2'
 services:
  svn:
-  image: pikado/alpine-svn
-  container_name: alpine_svn
-  hostname: alpine-svn
+  image: paul-hammant/alpine-svn-dav
+  container_name: alpine_svn-dav
+  hostname: alpine-svn-dav
   environment:
-  - DAV_SVN_USER=davsvnu
-  - DAV_SVN_PASS=davsvnp
+  - DAV_SVN_USER=davsvn
+  - DAV_SVN_PASS=davsvn
   - SVN_REPO=repo
   ports:
   - "80"
