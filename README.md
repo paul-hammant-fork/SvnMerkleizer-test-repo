@@ -1,4 +1,11 @@
 # alpine-svn
+
+Alpine Linux + Subversion via Apache2's interface on port 80 (on the container)
+
+* Alipine Linux is presently v3.6
+* Subversion is presently v1.9.7
+* Apache is presently v2.4.27
+
 ## Description:
 
 Docker image for Subversion with WebDAV on Alpine Linux. This image has 'Auto-versioning' turned on (SVNAutoversioning on) for PUTs from non subversion clients.
@@ -6,9 +13,9 @@ Docker image for Subversion with WebDAV on Alpine Linux. This image has 'Auto-ve
 ## Building it (it is not up on Dockerhub)
 
 ```
-git clone git@github.com:paul-hammant/alpine-svn.git
-cd alpine-svn
-docker build -t paul-hammant/alpine-svn .
+$ git clone git@github.com:paul-hammant/alpine-svn.git
+$ cd alpine-svn
+$ docker build -t paul-hammant/alpine-svn .
 ```
 
 ## Running it
@@ -16,22 +23,24 @@ docker build -t paul-hammant/alpine-svn .
 Starting container with docker command:
 
 ```
-docker run -d -P paul-hammant/alpine-svn
+$ docker run -d -P paul-hammant/alpine-svn
 ```
-^ The containers start with the default account: davsvn (password: davsvn) and the default repository: testrepo
+^ The container starts with the default account: davsvn (password: davsvn) and the default repository: testrepo
+
+### Alternates
 
 ```
-docker run -d -e SVN_REPO=repo -P paul-hammant/alpine-svn
+$ docker run -d -e SVN_REPO=repo -P paul-hammant/alpine-svn
 ```
 ^ The container starts with the default account: davsvn (password: davsvn) and the specified repository: repo
 
 ```
-docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -P paul-hammant/alpine-svn
+$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -P paul-hammant/alpine-svn
 ```
 ^ The container starts with the specified account: user (password: pass) and the default repository: testrepo
 
 ```
-docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -e SVN_REPO=repo -P paul-hammant/alpine-svn
+$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -e SVN_REPO=repo -P paul-hammant/alpine-svn
 ```
 ^ The container starts with the specified account: user (password: pass) and the specified repository: repo
 
@@ -41,21 +50,23 @@ Docker allocates an expanding sorage file to the container. The default for that
 
 ## Using it
 
-Quick and dirty, note the server address:
-
+You need to take a note of the server address (it could have been overridden with a `-p hostPort:guestPort` option on the run command, but was not.
 ```
-docker ps
+$ docker ps 
+CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                   NAMES
+2f43a74191c0        paul-hammant/alpine-svn   "/run.sh"           5 seconds ago       Up 3 seconds        0.0.0.0:32768->80/tcp   clever_murdock
 ```
 
 Then, in a new directory elsewhere:
 
 ```
-svn co --username davsvn --password davsvn http://0.0.0.0:32772/svn/testrepo
+svn co --username davsvn --password davsvn http://0.0.0.0:32768/svn/testrepo
 cd testrepo
-# add/chg/commit as usual
+# the add/chg/commit, as usual
 ```
+32768 was what you picked out of `docker ps`.
 
-And the magic (do in a new directory)
+And in fresh directory somehere (not the git-checkout of alpine-svn), the magic:
 
 ```
 echo "hello" > .greeting
@@ -64,7 +75,7 @@ curl -u davsvn:davsvn -X PUT -T .greeting http://0.0.0.0:32772/svn/testrepo/gree
 
 Whereupon you can `svn up` back in the checkout to see it.
 
-Commit messages suck:
+## Commit messages suck
 
     `Autoversioning commit:  a non-deltaV client made a change to`
 
