@@ -73,7 +73,7 @@ And in fresh directory somehere (not the git-checkout of alpine-svn), the magic:
 
 ```
 echo "hello" > .greeting
-curl -u davsvn:davsvn -X PUT -T .greeting http://0.0.0.0:32772/svn/testrepo/greeting.txt
+curl -u davsvn:davsvn -X PUT -T .greeting http://0.0.0.0:32768/svn/testrepo/greeting.txt
 ```
 
 Whereupon you can `svn up` back in the checkout to see it.
