@@ -18,9 +18,9 @@ Alpine Linux + Subversion via Apache2's interface on port 80 for WebDAV (on the 
 # Building it (it is not up on Dockerhub)
 
 ```
-$ git clone git@github.com:paul-hammant/alpine-svn.git
-$ cd alpine-svn
-$ docker build -t paul-hammant/alpine-svn .
+$ git clone git@github.com:subsyncit/alpine-svn-dav.git
+$ cd alpine-svn-dav
+$ docker build -t subsyncit/alpine-svn-dav .
 ```
 
 # Running it
@@ -28,24 +28,24 @@ $ docker build -t paul-hammant/alpine-svn .
 Starting container with docker command:
 
 ```
-$ docker run -d -P paul-hammant/alpine-svn
+$ docker run -d -P subsyncit/alpine-svn-dav
 ```
 ^ The container starts with the default account: davsvn (password: davsvn) and the default repository: testrepo
 
 ## Alternates
 
 ```
-$ docker run -d -e SVN_REPO=repo -P paul-hammant/alpine-svn
+$ docker run -d -e SVN_REPO=repo -P subsyncit/alpine-svn-dav
 ```
 ^ The container starts with the default account: davsvn (password: davsvn) and the specified repository: repo
 
 ```
-$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -P paul-hammant/alpine-svn
+$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -P subsyncit/alpine-svn-dav
 ```
 ^ The container starts with the specified account: user (password: pass) and the default repository: testrepo
 
 ```
-$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -e SVN_REPO=repo -P paul-hammant/alpine-svn
+$ docker run -d -e DAV_SVN_USER=user -e DAV_SVN_PASS=pass -e SVN_REPO=repo -P subsyncit/alpine-svn-dav
 ```
 ^ The container starts with the specified account: user (password: pass) and the specified repository: repo
 
@@ -59,7 +59,7 @@ You need to take a note of the server address (it could have been overridden wit
 ```
 $ docker ps 
 CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                   NAMES
-2f43a74191c0        paul-hammant/alpine-svn   "/run.sh"           5 seconds ago       Up 3 seconds        0.0.0.0:32768->80/tcp   clever_murdock
+2f43a74191c0        subsyncit/alpine-svn-dav   "/run.sh"           5 seconds ago       Up 3 seconds        0.0.0.0:32768->80/tcp   clever_murdock
 ```
 
 Then, in a new directory elsewhere:
@@ -71,7 +71,7 @@ cd testrepo
 ```
 32768 was what you picked out of `docker ps`.
 
-And in fresh directory somehere (not the git-checkout of alpine-svn), the magic:
+And in fresh directory somewhere (not the git-checkout of alpine-svn-dav), the magic:
 
 ```
 echo "hello" > .greeting
