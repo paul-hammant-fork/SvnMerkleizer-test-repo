@@ -6,8 +6,7 @@ Alpine Linux + Subversion via Apache2's interface on port 80 for WebDAV (on the 
 
 ## Image special features:
 
-1. SVNAutoversioning turned on, to allow PUTs from non-Subversion clients to work (with default commit message)
-2. DepthInfinity is also turned on, to allow deep querying for changed files, which probably means you should NOT allow anon access.
+SVNAutoversioning is turned on, to allow PUTs from non-Subversion clients to work (with default commit message)
 
 ## Versions of key components
 
@@ -15,7 +14,7 @@ Alpine Linux + Subversion via Apache2's interface on port 80 for WebDAV (on the 
 * Subversion is presently v1.9.7
 * Apache is presently v2.4.27
 
-# Building it (it is not up on Dockerhub)
+# Building it (instead of using the version on Dockerhub)
 
 ```
 $ git clone git@github.com:subsyncit/alpine-svn-dav.git
@@ -57,7 +56,7 @@ Docker allocates an expanding sorage file to the container. The default for that
 
 You need to take a note of the server address (it could have been overridden with a `-p hostPort:guestPort` option on the run command, but was not.
 ```
-$ docker ps 
+$ docker ps
 CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                   NAMES
 2f43a74191c0        subsyncit/alpine-svn-dav   "/run.sh"           5 seconds ago       Up 3 seconds        0.0.0.0:32768->80/tcp   clever_murdock
 ```
