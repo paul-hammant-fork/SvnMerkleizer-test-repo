@@ -9,6 +9,8 @@ MAINTAINER Paul Hammant <paul@hammant.org>
 # Install and configure Apache WebDAV and Subversion
 RUN apk --no-cache add apache2 apache2-utils apache2-webdav mod_dav_svn subversion
 ADD vh-davsvn.conf /etc/apache2/conf.d/
+COPY dataset dataset
+COPY secondCommit secondCommit
 RUN mkdir -p /run/apache2
 
 ADD run.sh /
