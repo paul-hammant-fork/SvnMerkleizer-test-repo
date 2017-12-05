@@ -1,7 +1,7 @@
 version: '1'
 services:
  svn:
-  image: paul-hammant/svn-merkleizer-test-repo
+  image: paul-hammant/svnmerkleizer-test-repo
   container_name: alpine_svn-dav
   hostname: alpine-svn-dav
   environment:
