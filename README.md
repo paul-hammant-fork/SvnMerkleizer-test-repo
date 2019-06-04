@@ -21,4 +21,6 @@ Instances are not intended to be used by humans. Test suites are though, includi
 
 # Notes
 
-See [authz.authz](authz.authz) for the two users within the repo: `harry` and `sally`. Harry's password is `harrypw`, and sally's password is `sallypw`. Thet have different permissions to the director tree. One can essentially see more directories than the others.
+1. See [authz.authz](authz.authz) for the two users within the repo: `harry` and `sally`. Harry's password is `harrypw`, and sally's password is `sallypw`. Thet have different permissions to the director tree. One can essentially see more directories than the others.
+
+2. You should not use this Docker image for any production workload - it is for testing only and has known and shared passwords for users.
