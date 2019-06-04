@@ -18,3 +18,7 @@ $ docker run -d -p 8098:80 -P paul-hammant/svnmerkleizer-test-repo
 # Using it
 
 Instances are not intended to be used by humans. Test suites are though, including one at https://github.com/paul-hammant/svnmerkleizer
+
+# Notes
+
+See [authz.authz](authz.authz) for the two users within the repo: harry and sally. Harry's password is harrypw, and sally's password is sallypw. Thet have different permissions to the director tree. One can essentially see more directories than the others.
