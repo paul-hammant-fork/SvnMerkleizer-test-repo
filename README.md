@@ -13,7 +13,8 @@ $ docker build -t paul-hammant/svnmerkleizer-test-repo .
 $ docker run -d -p 8098:80 -P paul-hammant/svnmerkleizer-test-repo
 ```
 
-^ The container starts with the default account: davsvn (password: davsvn) and a repository at http://localhost:8098/svn/dataset/
+The container starts with a repository mounted at http://localhost:8098/svn/dataset/. You could do a regular Subversion checkout 
+from there (or subdirectory).
 
 # Using it
 
