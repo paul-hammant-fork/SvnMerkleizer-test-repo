@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.7
 MAINTAINER Paul Hammant <paul@hammant.org>
 
 # Proxy settings if necessary
