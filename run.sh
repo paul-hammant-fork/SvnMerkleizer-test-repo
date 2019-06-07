@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ! -d "/var/svn/dataset"; then
+if [ ! -d "/var/svn/dataset" ]; then
    svnadmin create /var/svn/dataset
    htpasswd -bc /etc/apache2/conf.d/davsvn.htpasswd harry harrypw
    htpasswd -b /etc/apache2/conf.d/davsvn.htpasswd sally sallypw
