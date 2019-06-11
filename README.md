@@ -9,8 +9,8 @@ Alpine Linux + Subversion via Apache2's MOD_DAV_SVN interface on port 80 (on the
 ```
 $ git clone git@github.com:paul-hammant-fork/SvnMerkleizer-test-repo.git
 $ cd SvnMerkleizer-test-repo
-$ docker build -t paul-hammant/SvnMerkleizer-test-repo .
-$ docker run -d -p 8098:80 -P paul-hammant/SvnMerkleizer-test-repo
+$ docker build -t paul-hammant/svnmerkleizer-test-repo .
+$ docker run -d -p 8098:80 -P paul-hammant/svnmerkleizer-test-repo
 ```
 
 The container starts with a repository mounted at http://localhost:8098/svn/dataset/ on the host. You could do a regular Subversion checkout from there (or any subdirectory).
